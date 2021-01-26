@@ -1,5 +1,6 @@
 # Ni's Homework Page
 |**Date**|**2021/01/25**|
+|--------|--------------|
 
 This is the repository for hosting and posting my homework assignments for Programming with Data, please feel free to comment on my codes.
 
