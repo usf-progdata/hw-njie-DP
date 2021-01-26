@@ -1,14 +1,4 @@
----
-title: "Ni's Homework Page"
-output:
-  github_document
-Author: Ni Jie
-date: '`r format(Sys.time(), "%d %B, %Y")`'
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Ni's Homework Page
 
 This is the repository for hosting and posting my homework assignments for Programming with Data, please feel free to comment on my codes.
 
