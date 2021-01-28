@@ -4,7 +4,7 @@
 
 This is the repository for hosting and posting my homework assignments for Programming with Data.
 
-## Navigating my repository
+## Navigating My Repository
 
 Go to [the pulled branch](https://github.com/usf-progdata/hw-njie-DP/pulls) and check my codes, you can also make comments to the code under source diff and display the output under rich diff. 
 
