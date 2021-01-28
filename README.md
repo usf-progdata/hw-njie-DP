@@ -20,6 +20,3 @@ My name is Ni, a third-year graduate student from the University of South Florid
 
 I also want to introduce you my two lovely Siamese cats!  
 ![Hulu & Pulu](https://static.wixstatic.com/media/41c14b_0dc6344d51a245a2a5046849dd86b1bf~mv2.jpg)
-
-
-
