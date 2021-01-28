@@ -1,8 +1,8 @@
-# Ni's Homework Page
+# Ni's Homework Repository
 |**Date**|**2021/01/25**|
 |--------|--------------|
 
-This is the repository for hosting and posting my homework assignments for Programming with Data, please feel free to comment on my codes.
+This repository is for hosting and posting Ni's homework assignments for Programming with Data, please feel free to comment on my codes.
 
 ## Navigating my repository
 
