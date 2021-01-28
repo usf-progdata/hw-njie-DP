@@ -1,4 +1,4 @@
-# Ni's Homework Repository
+# Homework Template
 |**Date**|**2021/01/25**|
 |--------|--------------|
 
