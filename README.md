@@ -1,8 +1,8 @@
-# Homework Template
+# Ni's Homework Page
 |**Date**|**2021/01/25**|
 |--------|--------------|
 
-This is the repository for hosting and posting all homework assignments for Programming with Data.
+This is the repository for hosting and posting my homework assignments for Programming with Data.
 
 ## Navigating my repository
 
