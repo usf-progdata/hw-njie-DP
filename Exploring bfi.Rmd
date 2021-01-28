@@ -1,0 +1,19 @@
+---
+title: "Exploring bfi"
+author: "Ni Jie"
+date: "1/25/2021"
+output: html_document
+---
+
+## Exploring bfi dataset
+
+I explored the "bfi" dataset from "psych" package. The variables are BFI items, gender, education, and age. This dataset includes 2800 observations and 28 variables. The mean age of participants is 28.78 with a standard deviation of 11.13.
+
+```{r bfi}
+library(psych)
+str(bfi)
+nrow(bfi)
+ncol(bfi)
+describe(bfi)
+summary(bfi)
+```
