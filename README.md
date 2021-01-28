@@ -2,7 +2,7 @@
 |**Date**|**2021/01/25**|
 |--------|--------------|
 
-This repository is for hosting and posting Ni's homework assignments for Programming with Data, please feel free to comment on my codes.
+This is template repository for hosting and posting homework assignments for Programming with Data.
 
 ## Navigating my repository
 
