@@ -5,6 +5,8 @@ date: "1/25/2021"
 output: html_document
 ---
 
+<!-- Please place all of the files for a hw assignment in a folder labeled, hw01, hw02, etc. -->
+
 ## Exploring bfi dataset
 
 I explored the "bfi" dataset from "psych" package. The variables are BFI items, gender, education, and age. This dataset includes 2800 observations and 28 variables. The mean age of participants is 28.78 with a standard deviation of 11.13.
