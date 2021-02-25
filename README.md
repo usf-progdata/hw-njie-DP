@@ -1,17 +1,12 @@
-<!-- Great work, just a few comments! -->
-
 # Ni's Homework Page
-
-<!-- Put a blank line between paragraphs, headings, etc. to ensure proper formatting when rendered. -->
-
 |**Date**|**2021/01/25**|
 |--------|--------------|
 
-This is the repository for hosting and posting my homework assignments for Programming with Data.
+This is the repository for hosting and posting my homework assignments for Programming with Data, please feel free to comment on my codes.
 
-## Navigating My Repository
+## Navigating my repository
 
-Go to [the pull request page](https://github.com/usf-progdata/hw-njie-DP/pulls) and check my open pull requests, you can also make comments to the code under source diff and display the output under rich diff. 
+Go to [the pulled branch](https://github.com/usf-progdata/hw-njie-DP/pulls) and check my codes, you can also make comments to the code under source diff and display the output under rich diff. 
 
 ## Introducing Myself 
 

@@ -19,6 +19,17 @@ library(tidyverse) # BMW: library(tidyverse) also loads dplyr and ggplot2, so yo
 library(dplyr) # BMW: Don't include View() calls or similar in your final script 
 ```
 
+# Loading Packages
+
+```{r load packages}
+library(gapminder)
+library(palmerpenguins)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+View(gapminder)
+View(palmerpenguins::penguins)
+```
 
 # Exercise 1: Basic dplyr
 
@@ -43,6 +54,7 @@ subset1970 %>%
 ```{r}
 gapminder %>%
   mutate(changeLifeExp = lifeExp - lag(lifeExp)) %>%
+
   filter(changeLifeExp < 0)
 ```
 
@@ -51,6 +63,7 @@ gapminder %>%
 ```{r}
 gapminder %>%
   group_by(country) %>%
+
   filter(gdpPercap == max(gdpPercap)) # BMW: The question asked you to _filter_ the dataset, keeping the other variables, not just compute the max for each country.
 ```
 
@@ -59,6 +72,7 @@ gapminder %>%
 ```{r}
 gapminder %>%
   filter(country == "Canada") %>%
+
   ggplot(aes(x = lifeExp, y = log(gdpPercap))) + 
   geom_point()
 ```
@@ -69,6 +83,7 @@ gapminder %>%
 
 ```{r}
 #descriptive table
+
 palmerpenguins::penguins %>% # BMW: The select() was unnecessary. Don't select unnecessarily. 
   summarize(mean_bill = mean(bill_length_mm, na.rm = TRUE),
             mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
@@ -77,8 +92,10 @@ palmerpenguins::penguins %>% # BMW: The select() was unnecessary. Don't select u
 
 # scatterplot
 palmerpenguins::penguins %>%
+
   ggplot(aes(x=bill_length_mm, y=flipper_length_mm)) + 
   geom_point(alpha = .5)
+
 ```
 
 2.2 I pick "body mass" and "species". Histogram and Boxplot are used to visualize these variables.
@@ -93,9 +110,11 @@ palmerpenguins::penguins %>%
 
 #histogram
 palmerpenguins::penguins %>%
+
   ggplot(aes(x = body_mass_g, fill = species)) + # BMW: you probably wanted fill
   geom_histogram(bins = 10, color = "black") +
   facet_wrap(~ species)
+
 
 #boxplot
 palmerpenguins::penguins %>%
