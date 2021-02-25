@@ -2,10 +2,12 @@
 title: "Homework03"
 author: "Ni Jie"
 date: "2/18/2021"
-output: html_document
+output: 
+  github_document: default
+  html_document: default
 ---
 ```{r allow errors, echo = FALSE}
-knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(error = FALSE)
 ```
 
 # Loading Packages
