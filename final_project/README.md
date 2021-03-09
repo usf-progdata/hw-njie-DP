@@ -1,19 +1,38 @@
 # Final Project
+
 ## Examining the Effectiveness of Anchoring Vignettes in Personality Research
 
 
 |**Date**|**2021/03/08**|
 |--------|--------------|
 
-This is the repository for hosting and posting my final project for Programming with Data. To avoid violating privacy agreement, the dataset for this project is generated using synthpop.
+This is the repository for hosting and posting my final project for Programming with Data. 
 
 
-## Peer Review
+## Data Documentation
 
-Go to [the pull request page](https://github.com/usf-progdata/hw-njie-DP/pulls) and check my open pull requests, you can also make comments to the code under source diff and display the output under rich diff. 
+- To avoid violating privacy agreement, the dataset for this project is generated using synthpop.
+
+- The key variables of this study includes:
+
+|**Variables**|**Types**|**Values**|
+|-------------|---------|----------|
+|----BFI2-----|-numeric-|1,2,3,4,5-|
+|----HBCL-----|-numeric-|1,2,3,4,5-|
+|----UWESS----|-numeric-|1,2,3,4,5-|
+|--vignettes--|-numeric-|1,2,3,4,5-|
+|-----gpa-----|-numeric-|---0to4---|
+|-----age-----|-numeric-|--over18--|
+|----gender---|character|men,women,etc.|
+|--ethnicity--|character|caucasian,etc.|
+|---income----|character|<20,000,etc.|
+|--condition--|character|control,SelfRated,fixed|
 
 
-## Navigating Master Branch 
+- Missing data is indicated by "NA" or "n/a".
+
+
+## Branch Navigation
 
 ### Data folder
 
