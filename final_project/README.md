@@ -21,7 +21,7 @@ This is the repository for hosting and posting my final project for Programming 
 |HBCL|numeric|1, 2, 3, 4, 5|
 |UWESS|numeric|1, 2, 3, 4, 5|
 |Vignettes|numeric|1, 2, 3, 4, 5|
-|GPA|numeric|0-4.0|
+|GPA|numeric|0 - 4.0|
 |Age|numeric|over 18|
 |Gender|character|men, women, etc.|
 |Ethnicity|character|Caucasian, etc.|
