@@ -7,21 +7,25 @@
 This is the repository for hosting and posting my final project for Programming with Data.
 
 
-## Navigating My Repository
+## Peer Review
 
 Go to [the pull request page](https://github.com/usf-progdata/hw-njie-DP/pulls) and check my open pull requests, you can also make comments to the code under source diff and display the output under rich diff. 
 
 
-## Introducing Myself 
+## Navigating Master Branch 
 
-My name is Ni, a third-year graduate student from the University of South Florida, major in *Industrial-organizational psychology*.
+# Data folder
 
+- *raw_data folder*: you can find the original dataset, questionnaire, and codebook from this folder.
 
-**My hobbies include:**
+- *doc folder*: you can find adminstrative documents from this folder.
 
-- creative writing
-- kendo
-- gaming
+# Output folder
 
-I also want to introduce you my two lovely Siamese cats!  
-![Hulu & Pulu](https://static.wixstatic.com/media/41c14b_0dc6344d51a245a2a5046849dd86b1bf~mv2.jpg)
+- *figures folder*: you can find figure output from this folder.
+
+- *reports folder*: you can find document output from this folder.
+
+# `R folder
+
+You can find R Markdown files from this folder.
