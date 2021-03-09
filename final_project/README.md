@@ -1,11 +1,11 @@
 # Final Project
-## Effects of Stress Among Correctional Officers
+## Examining the Effectiveness of Anchoring Vignettes in Personality Research
 
 
 |**Date**|**2021/03/08**|
 |--------|--------------|
 
-This is the repository for hosting and posting my final project for Programming with Data.
+This is the repository for hosting and posting my final project for Programming with Data. To avoid violating privacy agreement, the dataset for this project is generated using synthpop.
 
 
 ## Peer Review
@@ -17,9 +17,9 @@ Go to [the pull request page](https://github.com/usf-progdata/hw-njie-DP/pulls) 
 
 ### Data folder
 
-- *raw_data folder*: you can find the original dataset, questionnaire, and codebook from this folder.
+- *raw_data folder*: you can find the generated dataset and codebook from this folder.
 
-- *doc folder*: you can find adminstrative documents from this folder.
+- *doc folder*: you can find questionnaires and IRB approval documents from this folder.
 
 ### Output folder
 
