@@ -1,4 +1,4 @@
-# Final Project:
+# Final Project
 ## Effects of Stress Among Correctional Officers
 
 
