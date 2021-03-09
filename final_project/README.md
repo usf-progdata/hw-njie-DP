@@ -36,17 +36,17 @@ This is the repository for hosting and posting my final project for Programming 
 
 ### Data folder
 
-- *raw_data folder*: you can find the generated dataset and codebook from this folder.
+- *raw_data folder*: you can find the generated dataset and codebook in this folder.
 
-- *doc folder*: you can find questionnaires and IRB approval documents from this folder.
+- *doc folder*: you can find questionnaires and IRB approval documents in this folder.
 
 ### Output folder
 
-- *figures folder*: you can find figure output from this folder.
+- *figures folder*: you can find figure output in this folder.
 
-- *reports folder*: you can find document output from this folder.
+- *reports folder*: you can find document output in this folder.
 
 ### `R folder
 
-You can find R Markdown files from this folder.
+You can find R Markdown files in this folder.
 
