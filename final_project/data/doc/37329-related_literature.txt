@@ -1,0 +1,16 @@
+Bibliography
+Effects of Stress Among Correctional Officers, United States, 2017-2018
+
+This bibliography includes published and unpublished works that are related 
+to ICPSR study 37329. It includes works that are based on primary
+or secondary analysis of the data, or which describe or critique those
+data or the collection methodology. 
+
+If you publish a work or know of other works that are based on these data,
+please send the complete citation and name of the ICPSR study used to:
+icpsr-biblio-notify@umich.edu 
+
+
+1. Walters, Glenn D., "Getting to the source: How inmates and other staff
+contribute to correctional officer stress." Journal of Crime and Justice.
+in press 2021,. DOI: 10.1080/0735648X.2020.1862696
