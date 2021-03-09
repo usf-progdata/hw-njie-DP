@@ -17,16 +17,16 @@ This is the repository for hosting and posting my final project for Programming 
 
 |**Variables**|**Types**|**Values**|
 |-------------|---------|----------|
-|BFI2|numeric|1,2,3,4,5|
-|HBCL|numeric|1,2,3,4,5|
-|UWESS|numeric|1,2,3,4,5|
-|vignettes|numeric|1,2,3,4,5|
-|gpa|numeric|0to4|
-|age|numeric|over18|
-|gender|character|men,women,etc.|
-|ethnicity|character|caucasian,etc.|
-|income|character|<20,000,etc.|
-|condition|character|control,SelfRated,fixed|
+|BFI-2|numeric|1, 2, 3, 4, 5|
+|HBCL|numeric|1, 2, 3, 4, 5|
+|UWESS|numeric|1, 2, 3, 4, 5|
+|Vignettes|numeric|1, 2, 3, 4, 5|
+|GPA|numeric|0-4.0|
+|Age|numeric|over 18|
+|Gender|character|men, women, etc.|
+|Ethnicity|character|Caucasian, etc.|
+|Income|character|< 20,000, etc.|
+|Condition|character|control, self-rated, fixed|
 
 
 - Missing data is indicated by "NA" or "n/a".
