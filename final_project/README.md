@@ -29,7 +29,7 @@ This is the repository for hosting and posting my final project for Programming 
 |Condition|character|control, self-rated, fixed|
 
 
-- Missing data is indicated by "NA" or "n/a".
+- Missing data is indicated by "", "N/A", "NA" or "n/a".
 
 
 ## Branch Navigation
