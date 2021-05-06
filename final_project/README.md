@@ -11,8 +11,6 @@
 
 ## Data Documentation
 
-- To avoid violating privacy agreement, the dataset for this project is generated using synthpop.
-
 - The key variables of this study includes:
   
   |**Variables**|**Types**|**Values**|
