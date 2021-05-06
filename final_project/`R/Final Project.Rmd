@@ -1,0 +1,285 @@
+---
+title: "Final Project"
+author: "Ni Jie"
+date: "4/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Packages
+
+```{r load packages}
+library(here)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(gridExtra)
+library(apaTables)
+library(psych)
+library(rms)
+library(maxLik)
+library(miscTools)
+library(censReg)
+library(anchors)
+library(lavaan)
+library(semTools)
+library(cocor)
+```
+
+
+# Input dataset & dictionary
+
+```{r}
+avp <- read_csv(here::here("data", "raw_data", "clean_data.csv"))
+key <- read_csv(here::here("data", "raw_data", "codebook_all.csv"))
+```
+
+
+## Clean dataset
+
+#reverse coding & descriptive dataset.
+
+```{r}
+summary(avp)
+#pull reversed items
+reversed <- key %>%
+  filter(Keying == -1) %>%
+  pull(Item)
+#reverse
+avp_reversed <-
+  avp %>%
+  mutate(
+    across(all_of(reversed),
+           ~ recode(.x, "5" = 1, "4" = 2, "3" = 3, "2" = 4, "1" = 5)))
+#total
+avp_tot <-
+  avp_reversed %>% 
+  rowwise() %>% 
+  mutate(ext = mean(c_across(ext1:ext12)),
+         agr = mean(c_across(agr1:agr12)),
+         con = mean(c_across(con1:con12)),
+         neg = mean(c_across(neg1:neg12)),
+         ope = mean(c_across(ope1:ope12)),
+         health = mean(c_across(health1:health26)),
+         study = mean(c_across(work1:work17)),
+         fext = mean(c_across(fext1:fext12)),
+         fagr = mean(c_across(fagr1:fagr12)),
+         fcon = mean(c_across(fcon1:fcon12)),
+         fneg = mean(c_across(fneg1:fneg12)),
+         fope = mean(c_across(fope1:fope12)))
+
+vars1 <- c("Age", "GPA", "health", "study", "ext", "agr", "con", "neg", "ope" )
+vars2 <- c("Age", "GPA", "health", "study", "fext", "fagr", "fcon", "fneg", "fope" )
+control_cor <- avp_tot[vars1]
+fixed_cor <- avp_tot[vars2]
+
+#pull description dataset
+control_cor_table <-
+  apa.cor.table(
+  control_cor, 
+  filename = "control_description1.doc",
+  table.number = 1
+)
+control_cor_table
+
+fixed_cor_table <-
+  apa.cor.table(
+  fixed_cor, 
+  filename = "fixed_description2.doc",
+  table.number = 2
+)
+fixed_cor_table
+```
+
+## Output
+```{r}
+#output cleaned dataset
+write_csv(avp_tot,
+          here::here("data", "raw_data", "avp_tot.csv"))
+``` 
+
+## describe data
+```{r}
+View(des_data)
+table_gender <- table(des_data$Gender)
+prop.table(table_gender)
+table_eth <- table(des_data$Ethnicity)
+prop.table(table_eth)
+table_lan <- table(des_data$Language)
+prop.table(table_lan)
+table_income <- table(des_data$Income)
+prop.table(table_income)
+
+describe(des_data$Age)
+
+scale_hbcl <- 
+  des_data %>% 
+  select(health1:health26)
+alpha(scale_hbcl)
+
+scale_uwess <- 
+  des_data %>% 
+  select(work1:work17)
+alpha(scale_uwess)
+``` 
+
+
+## independent t-test/f-test: fixed vs. control
+```{r}
+#mean
+t.test(avp_tot$ext, avp_tot$fext)
+t.test(avp_tot$agr, avp_tot$fagr)
+t.test(avp_tot$ope, avp_tot$fope)
+t.test(avp_tot$neg, avp_tot$fneg)
+t.test(avp_tot$con, avp_tot$fcon)
+#variance
+avp_tot_var <- read_csv(here::here("data", "raw_data", "avp_tot_var.csv"))
+var.test(avp_tot_var$ext ~ avp_tot_var$group)
+var.test(avp_tot_var$agr ~ avp_tot_var$group)
+var.test(avp_tot_var$con ~ avp_tot_var$group)
+var.test(avp_tot_var$neg ~ avp_tot_var$group)
+var.test(avp_tot_var$ope ~ avp_tot_var$group)
+#reliability
+bigfive_control <- '
+conscientiousness =~ con1+con2+con3+con4+con5+con6+con7+con8+con9+con10+con11+con12
+agreeableness =~ agr1+agr2+agr3+agr4+agr5+agr6+agr7+agr8+agr9+agr10+agr11+agr12
+neuroticism =~ neg1+neg2+neg3+neg4+neg5+neg6+neg7+neg8+neg9+neg10+neg11+neg12
+extraversion =~ ext1+ext2+ext3+ext4+ext5+ext6+ext7+ext8+ext9+ext10+ext11+ext12
+openness =~ ope1+ope2+ope3+ope4+ope5+ope6+ope7+ope8+ope9+ope10+ope11+ope12
+'
+fit_control <- cfa(bigfive_control, data = avp_reversed)
+reliability(fit_control)
+
+bigfive_fixed <- '
+conscientiousness =~ fcon1+fcon2+fcon3+fcon4+fcon5+fcon6+fcon7+fcon8+fcon9+fcon10+fcon11+fcon12
+agreeableness =~ fagr1+fagr2+fagr3+fagr4+fagr5+fagr6+fagr7+fagr8+fagr9+fagr10+fagr11+fagr12
+neuroticism =~ fneg1+fneg2+fneg3+fneg4+fneg5+fneg6+fneg7+fneg8+fneg9+fneg10+fneg11+fneg12
+extraversion =~ fext1+fext2+fext3+fext4+fext5+fext6+fext7+fext8+fext9+fext10+fext11+fext12
+openness =~ fope1+fope2+fope3+fope4+fope5+fope6+fope7+fope8+fope9+fope10+fope11+fope12
+'
+fit_fixed <- cfa(bigfive_fixed, data = avp_reversed)
+reliability(fit_fixed)
+``` 
+
+
+## COP self-rated
+```{r}
+## select & order self-rated vignettes
+SelfRated <- read_csv(here::here("data", "raw_data", "SelfRated.csv"))
+View(SelfRated)
+SelfRated <-
+  na.omit(SelfRated) %>%
+  rowwise() %>% 
+  mutate(ext = mean(c_across(ext1:ext12)),
+         agr = mean(c_across(agr1:agr12)),
+         con = mean(c_across(con1:con12)),
+         neg = mean(c_across(neg1:neg12)),
+         ope = mean(c_across(ope1:ope12)),
+         health = mean(c_across(health1:health26)),
+         study = mean(c_across(work1:work17)),
+         clow = mean(scon1, scon4, scon7, scon10, scon13),
+         cmed = mean(scon2, scon5, scon8, scon11, scon14),
+         chigh = mean(scon3, scon6, scon9, scon12, scon15),
+         elow = mean(sext1, sext4, sext7, sext10, sext13),
+         emed = mean(sext2, sext5, sext8, sext11, sext14),
+         ehigh = mean(sext3, sext6, sext9, sext12, sext15),
+         alow = mean(sagr1, sagr4, sagr7, sagr10, sagr13),
+         amed = mean(sagr2, sagr5, sagr8, sagr11, sagr14),
+         ahigh = mean(sagr3, sagr6, sagr9, sagr12, sagr15),
+         nlow = mean(sneg1, sneg4, sneg7, sneg10, sneg13),
+         nmed = mean(sneg2, sneg5, sneg8, sneg11, sneg14),
+         nhigh = mean(sneg3, sneg6, sneg9, sneg12, sneg15),
+         olow = mean(sope1, sope4, sope7, sope10, sope13),
+         omed = mean(sope2, sope5, sope8, sope11, sope14),
+         ohigh = mean(sope3, sope6, sope9, sope12, sope15))
+# conscientiousness
+rac <- anchors(con ~ clow + cmed + chigh, data = SelfRated, method = "C")
+SelfRatedc <- insert(SelfRated, rac, vnames = c("Csc", "Cec"))
+barplot(rac, main = "Censored Ordered Probit Allocation for Conscientiousness")
+
+# agreeableness
+raa <- anchors(agr ~ alow + amed + ahigh, data = SelfRated, method = "C")
+SelfRatedc <- insert(SelfRatedc, raa, vnames = c("Csa", "Cea") )
+barplot(raa, main = "Censored Ordered Probit Allocation for Agreeableness")
+
+# extraversion
+rae <- anchors(ext ~ elow + emed + ehigh, data = SelfRated, method = "C")
+SelfRatedc <- insert(SelfRatedc, rae, vnames = c("Cse", "Cee"))
+barplot(rae, main = "Censored Ordered Probit Allocation for Extraversion")
+
+# openness
+rao <- anchors(ope ~ olow + omed + ohigh, data = SelfRated, method = "C")
+SelfRatedc <- insert(SelfRatedc, rac, vnames = c("Cso", "Ceo") )
+barplot(rao, main = "Censored Ordered Probit Allocation for Openness")
+
+# neuroticism
+ran <- anchors(neg ~ nlow + nmed + nhigh, data = SelfRated, method = "C")
+SelfRatedc <- insert(SelfRatedc, rac, vnames = c("Csn", "Cen") )
+barplot(ran, main = "Censored Ordered Probit Allocation for Negative Emotionality")
+
+View(SelfRatedc)
+
+# table for anova
+score <- c(1, 2, 3, 4, 5, 6, 7)
+summary(rac, ties = "cpolr")
+summary(raa, ties = "cpolr")
+summary(rae, ties = "cpolr")
+summary(ran, ties = "cpolr")
+summary(rao, ties = "cpolr")
+fre_c <- c(0.140, 0.000, 0.223, 0.021, 0.412, 0.050, 0.154)
+fre_a <- c(0.172, 0.004, 0.114, 0.023, 0.405, 0.043, 0.239)
+fre_e <- c(0.175, 0.004, 0.352, 0.034, 0.312, 0.011, 0.112)
+fre_n <- c(0.298, 0.008, 0.410, 0.004, 0.202, 0.008, 0.069)
+fre_o <- c(0.142, 0.013, 0.099, 0.000, 0.540, 0.035, 0.171)
+ra.table <- data.frame(score, fre_c, fre_a, fre_e, fre_n, fre_o)
+c_mean = sum(ra.table$score*ra.table$fre_c)
+a_mean = sum(ra.table$score*ra.table$fre_a)
+e_mean = sum(ra.table$score*ra.table$fre_e)
+n_mean = sum(ra.table$score*ra.table$fre_n)
+o_mean = sum(ra.table$score*ra.table$fre_o)
+
+c_var = ra.table$score^2 %*% ra.table$fre_c/1 - c_mean^2
+a_var = ra.table$score^2 %*% ra.table$fre_a/1 - a_mean^2
+e_var = ra.table$score^2 %*% ra.table$fre_e/1 - e_mean^2
+n_var = ra.table$score^2 %*% ra.table$fre_n/1 - n_mean^2
+o_var = ra.table$score^2 %*% ra.table$fre_o/1 - o_mean^2
+
+#data for manova
+outc1 <- cpolr(cbind(Csc, Cec) ~ GPA, data = SelfRatedc)
+summary(outc1)
+outc2 <- cpolr(cbind(Csc, Cec) ~ health, data = SelfRatedc)
+summary(outc2)
+outc3 <- cpolr(cbind(Csc, Cec) ~ study, data = SelfRatedc)
+summary(outc3)
+
+outa1 <- cpolr(cbind(Csa, Cea) ~ GPA, data = SelfRatedc)
+summary(outa1)
+outa2 <- cpolr(cbind(Csa, Cea) ~ health, data = SelfRatedc)
+summary(outa2)
+outa3 <- cpolr(cbind(Csa, Cea) ~ study, data = SelfRatedc)
+summary(outa3)
+
+oute1 <- cpolr(cbind(Cse, Cee) ~ GPA, data = SelfRatedc)
+summary(oute1)
+oute2 <- cpolr(cbind(Cse, Cee) ~ health, data = SelfRatedc)
+summary(oute2)
+oute3 <- cpolr(cbind(Cse, Cee) ~ study, data = SelfRatedc)
+summary(oute3)
+
+outn1 <- cpolr(cbind(Csn, Cen) ~ GPA, data = SelfRatedc)
+summary(outn1)
+outn2 <- cpolr(cbind(Csn, Cen) ~ health, data = SelfRatedc)
+summary(outn2)
+outn3 <- cpolr(cbind(Csn, Cen) ~ study, data = SelfRatedc)
+summary(outn3)
+
+outo1 <- cpolr(cbind(Cso, Ceo) ~ GPA, data = SelfRatedc)
+summary(outo1)
+outo2 <- cpolr(cbind(Cso, Ceo) ~ health, data = SelfRatedc)
+summary(outo2)
+outo3 <- cpolr(cbind(Cso, Ceo) ~ study, data = SelfRatedc)
+summary(outo3)
+``` 
