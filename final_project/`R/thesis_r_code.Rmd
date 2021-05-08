@@ -1,5 +1,5 @@
 ---
-title: "Thesis"
+title: "Thesis R code"
 author: "Ni Jie"
 date: "4/10/2021"
 output: html_document
