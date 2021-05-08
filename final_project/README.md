@@ -27,7 +27,7 @@
   |Condition|character|control, self-rated, fixed|
   
   
-  - Missing data is indicated by "", "N/A", "NA" or "n/a".
+  - Missing data is indicated by "", "N/A", or "NA".
 
 
 ## Branch Navigation
